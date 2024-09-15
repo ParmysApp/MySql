@@ -26,7 +26,11 @@ sudo apt install mysql-server
 ```
 sudo mysql_secure_installation
 ```
-## Install PHP
+## Install PHP FPM
 ```
 sudo apt install php-fpm php-mysql
+```
+### Install PhpMyAdmin
+```
+sudo apt install phpmyadmin
 ```
