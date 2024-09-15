@@ -2,7 +2,45 @@
 ```
 sudo apt update && sudo apt upgrade -y
 ```
-
+```
+apt list --upgradable
+```
+```
+sudo apt install python3-update-manager update-manager-core
+```
+## Install Firewall
+```
+sudo apt install ufw
+```
+## Enable Firewall
+```
+sudo ufw enable
+```
+## Allow SSH New Port
+```
+sudo ufw allow NEW_PORT/tcp
+```
+## Deny SSH Old Port
+```
+sudo ufw deny 22/tcp
+```
+## Allow Important Ports
+```
+sudo ufw allow 80
+sudo ufw allow 443
+```
+## Firewall Status
+```
+sudo ufw status
+```
+## Change SSH Port
+```
+sudo nano /etc/ssh/sshd_config
+```
+```
+sudo service ssh restart
+sudo systemctl restart sshd
+```
 ## Install Nginx
 ```
 sudo apt install nginx
@@ -25,6 +63,10 @@ sudo apt install mysql-server
 ## MySql Security
 ```
 sudo mysql_secure_installation
+```
+## Install Software-properties-common
+```
+sudo apt install software-properties-common
 ```
 ## Add the repository for PHP
 ```
@@ -224,8 +266,4 @@ foreach (glob('/etc/phpmyadmin/conf.d/*.php') as $filename)
 ```
 sudo systemctl restart nginx
 sudo systemctl restart php8.3-fpm
-```
-```
-sudo ufw allow 80
-sudo ufw allow 443
 ```
