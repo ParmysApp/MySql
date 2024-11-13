@@ -8,7 +8,7 @@ apt list --upgradable
 ```
 sudo apt install python3-update-manager update-manager-core
 ```
-## Google BBR
+## Enable Google BBR
 TCP BBR module
 ```
 sudo modprobe tcp_bbr
