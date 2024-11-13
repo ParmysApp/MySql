@@ -8,6 +8,36 @@ apt list --upgradable
 ```
 sudo apt install python3-update-manager update-manager-core
 ```
+## Google BBR
+TCP BBR module
+```
+sudo modprobe tcp_bbr
+```
+Checking the BBR module
+```
+lsmod | grep bbr
+```
+Ensuring BBR is the default for TCP
+Open This File
+```
+sudo nano /etc/sysctl.conf
+```
+Please add the following text at the end of the above file.
+```
+net.ipv4.tcp_congestion_control=bbr
+```
+Save Settings
+```
+sudo sysctl -p
+```
+Checking if BBR is enabled
+```
+sysctl net.ipv4.tcp_congestion_control
+```
+Output :
+```
+net.ipv4.tcp_congestion_control = bbr
+```
 ## Install Firewall
 ```
 sudo apt install ufw
