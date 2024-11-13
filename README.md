@@ -9,34 +9,68 @@ apt list --upgradable
 sudo apt install python3-update-manager update-manager-core
 ```
 ## Enable Google BBR
-TCP BBR module
 ```
 sudo modprobe tcp_bbr
 ```
-Checking the BBR module
+## Checking the BBR module
 ```
 lsmod | grep bbr
 ```
-Ensuring BBR is the default for TCP
+## Ensuring BBR is the default for TCP
 Open This File
 ```
 sudo nano /etc/sysctl.conf
 ```
-Please add the following text at the end of the above file.
+## Please add the following text at the end of the above file.
 ```
 net.ipv4.tcp_congestion_control=bbr
 ```
-Save Settings
+## Save Settings
 ```
 sudo sysctl -p
 ```
-Checking if BBR is enabled
+## Checking if BBR is enabled
 ```
 sysctl net.ipv4.tcp_congestion_control
 ```
-Output :
+## Output :
 ```
 net.ipv4.tcp_congestion_control = bbr
+```
+## Install Redis
+```
+sudo apt install redis-server
+```
+Open This File
+```
+sudo nano /etc/redis/redis.conf
+```
+Add This Commands
+```
+supervised systemd
+```
+```
+maxmemory 256mb
+```
+```
+maxmemory-policy allkeys-lru
+```
+## Restart Redis
+```
+sudo systemctl restart redis-server
+```
+## Test Redis
+```
+redis-cli
+```
+```
+set test "Hello, Redis!"
+get test
+```
+## Output
+```
+OK
+"Hello, Redis!"
 ```
 ## Install Firewall
 ```
